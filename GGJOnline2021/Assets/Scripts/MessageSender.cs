@@ -16,6 +16,16 @@ public class MessageSender : MonoBehaviour
     [SerializeField] GameObject availableMessagesCounter;
     [SerializeField] GameObject mailIconPrefab;
 
+    public int MessagesAvailable
+    {
+        get => messagesAvailable;
+        set
+        {
+            messagesAvailable = value;
+            UpdateAvailableMessagesCounter();
+        }
+    }
+
     private void Start()
     {
         messageField.onValueChanged.AddListener(delegate { UpdateCharacterCounter(); });
