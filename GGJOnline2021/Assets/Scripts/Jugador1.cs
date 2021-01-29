@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Jugador.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Jugador1.inputactions'
 
 using System;
 using System.Collections;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @Jugador : IInputActionCollection, IDisposable
+public class @Jugador1 : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @Jugador()
+    public @Jugador1()
     {
         asset = InputActionAsset.FromJson(@"{
-    ""name"": ""Jugador"",
+    ""name"": ""Jugador1"",
     ""maps"": [
         {
             ""name"": ""Player"",
@@ -23,6 +23,14 @@ public class @Jugador : IInputActionCollection, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""24ad7cbc-2f71-48d5-a1aa-c59e781dcaef"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SendMessage"",
+                    ""type"": ""Button"",
+                    ""id"": ""9700a54c-9d40-4d4a-bd4c-f86688704ee7"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -62,31 +70,9 @@ public class @Jugador : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""8180e8bd-4097-4f4e-ab88-4523101a6ce9"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""down"",
                     ""id"": ""320bffee-a40b-4347-ac70-c210eb8bc73a"",
                     ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""1c5327b5-f71c-4f60-99c7-4e737386f1d1"",
-                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -106,31 +92,9 @@ public class @Jugador : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""2e46982e-44cc-431b-9f0b-c11910bf467a"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""right"",
                     ""id"": ""fcfe95b8-67b9-4526-84b5-5d0bc98d6400"",
                     ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""77bff152-3580-4b21-b6de-dcd0c7e41164"",
-                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -157,6 +121,17 @@ public class @Jugador : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Joystick"",
                     ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1643a48a-b7cb-4a61-8a2d-d7a3888e299a"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SendMessage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -229,6 +204,7 @@ public class @Jugador : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_SendMessage = m_Player.FindAction("SendMessage", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -279,11 +255,13 @@ public class @Jugador : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_SendMessage;
     public struct PlayerActions
     {
-        private @Jugador m_Wrapper;
-        public PlayerActions(@Jugador wrapper) { m_Wrapper = wrapper; }
+        private @Jugador1 m_Wrapper;
+        public PlayerActions(@Jugador1 wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @SendMessage => m_Wrapper.m_Player_SendMessage;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -296,6 +274,9 @@ public class @Jugador : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @SendMessage.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendMessage;
+                @SendMessage.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendMessage;
+                @SendMessage.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendMessage;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -303,6 +284,9 @@ public class @Jugador : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @SendMessage.started += instance.OnSendMessage;
+                @SendMessage.performed += instance.OnSendMessage;
+                @SendMessage.canceled += instance.OnSendMessage;
             }
         }
     }
@@ -355,5 +339,6 @@ public class @Jugador : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnSendMessage(InputAction.CallbackContext context);
     }
 }
