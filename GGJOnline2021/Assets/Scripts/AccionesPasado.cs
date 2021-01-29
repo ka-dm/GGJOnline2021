@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AccionesPasado : MonoBehaviour
 {
@@ -16,18 +17,15 @@ public class AccionesPasado : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp("space")) SembrarSemilla(transform.position);
+        //if (Input.GetKeyUp("space")) SembrarSemilla(transform.position);
     }
 
-    public void SembrarSemilla(Vector3 pos)
+    public void OnSembrarSemilla(InputValue input)
     {
-            Quaternion rot = Quaternion.Euler(0, 0, 0);
-            Instantiate(arbol, pos, rot);
+        Vector3 pos = transform.position;
+        Instantiate(arbol, pos, Quaternion.identity);
 
-            contador++;
-            print("Sembar semilla" + contador);
+        contador++;
+        print("Sembar semilla" + contador);
     }
-
-
-
 }

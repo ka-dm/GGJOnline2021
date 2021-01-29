@@ -25,6 +25,14 @@ public class @Jugador2 : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SembrarSemilla"",
+                    ""type"": ""Button"",
+                    ""id"": ""a719da27-734a-4fc4-8c80-b87847961cb0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -115,6 +123,17 @@ public class @Jugador2 : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf3d9512-932a-4b7e-b1d4-415063ca8321"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SembrarSemilla"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +204,7 @@ public class @Jugador2 : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_SembrarSemilla = m_Player.FindAction("SembrarSemilla", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -235,11 +255,13 @@ public class @Jugador2 : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_SembrarSemilla;
     public struct PlayerActions
     {
         private @Jugador2 m_Wrapper;
         public PlayerActions(@Jugador2 wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @SembrarSemilla => m_Wrapper.m_Player_SembrarSemilla;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -252,6 +274,9 @@ public class @Jugador2 : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @SembrarSemilla.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSembrarSemilla;
+                @SembrarSemilla.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSembrarSemilla;
+                @SembrarSemilla.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSembrarSemilla;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -259,6 +284,9 @@ public class @Jugador2 : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @SembrarSemilla.started += instance.OnSembrarSemilla;
+                @SembrarSemilla.performed += instance.OnSembrarSemilla;
+                @SembrarSemilla.canceled += instance.OnSembrarSemilla;
             }
         }
     }
@@ -311,5 +339,6 @@ public class @Jugador2 : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnSembrarSemilla(InputAction.CallbackContext context);
     }
 }

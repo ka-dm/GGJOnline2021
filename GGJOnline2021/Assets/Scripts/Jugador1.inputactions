@@ -20,14 +20,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "SembarSemilla",
-                    "type": "Button",
-                    "id": "30253e52-0569-49af-9196-886fea61f70b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -127,17 +119,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "SendMessage",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "edbc7111-846e-41c7-aab5-7a6dac559c38",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "SembarSemilla",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

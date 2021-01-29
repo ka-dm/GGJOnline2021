@@ -42,7 +42,6 @@ public class CrearPlataforma : MonoBehaviour
                 obj.GetComponent<GridStats>().y = j;
             }
         }
-
         transform.position = finalLocation;
     }
 
