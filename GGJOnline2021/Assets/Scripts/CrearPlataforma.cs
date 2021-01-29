@@ -7,6 +7,8 @@ public class CrearPlataforma : MonoBehaviour
     [SerializeField] GameObject BlockPrefab;
     int n, m, scale;
     Vector3 leftBottomLocation = new Vector3(0,0,0);
+    [SerializeField] Vector3 finalLocation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,7 @@ public class CrearPlataforma : MonoBehaviour
             }
         }
 
-        transform.position = new Vector3Int(-17, -1, -7);
+        transform.position = finalLocation;
     }
 
 }
