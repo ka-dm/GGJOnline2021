@@ -25,7 +25,5 @@ public class Movement : MonoBehaviour
         Vector2 vec = input.Get<Vector2>();
         moveVector = new Vector3(vec.x, 0, vec.y) * moveSpeed * Time.deltaTime;
     }
-
-
     
 }

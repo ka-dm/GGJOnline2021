@@ -33,14 +33,6 @@ public class @Jugador1 : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""SembarSemilla"",
-                    ""type"": ""Button"",
-                    ""id"": ""30253e52-0569-49af-9196-886fea61f70b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -142,17 +134,6 @@ public class @Jugador1 : IInputActionCollection, IDisposable
                     ""action"": ""SendMessage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""edbc7111-846e-41c7-aab5-7a6dac559c38"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""SembarSemilla"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -224,7 +205,6 @@ public class @Jugador1 : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_SendMessage = m_Player.FindAction("SendMessage", throwIfNotFound: true);
-        m_Player_SembarSemilla = m_Player.FindAction("SembarSemilla", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -276,14 +256,12 @@ public class @Jugador1 : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_SendMessage;
-    private readonly InputAction m_Player_SembarSemilla;
     public struct PlayerActions
     {
         private @Jugador1 m_Wrapper;
         public PlayerActions(@Jugador1 wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @SendMessage => m_Wrapper.m_Player_SendMessage;
-        public InputAction @SembarSemilla => m_Wrapper.m_Player_SembarSemilla;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -299,9 +277,6 @@ public class @Jugador1 : IInputActionCollection, IDisposable
                 @SendMessage.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendMessage;
                 @SendMessage.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendMessage;
                 @SendMessage.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendMessage;
-                @SembarSemilla.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSembarSemilla;
-                @SembarSemilla.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSembarSemilla;
-                @SembarSemilla.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSembarSemilla;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -312,9 +287,6 @@ public class @Jugador1 : IInputActionCollection, IDisposable
                 @SendMessage.started += instance.OnSendMessage;
                 @SendMessage.performed += instance.OnSendMessage;
                 @SendMessage.canceled += instance.OnSendMessage;
-                @SembarSemilla.started += instance.OnSembarSemilla;
-                @SembarSemilla.performed += instance.OnSembarSemilla;
-                @SembarSemilla.canceled += instance.OnSembarSemilla;
             }
         }
     }
@@ -368,6 +340,5 @@ public class @Jugador1 : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnSendMessage(InputAction.CallbackContext context);
-        void OnSembarSemilla(InputAction.CallbackContext context);
     }
 }
