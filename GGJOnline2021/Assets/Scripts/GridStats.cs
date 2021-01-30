@@ -22,7 +22,7 @@ public class GridStats : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        print("["+x+","+y+"]" + " collisionInfo = " + collisionInfo.gameObject.name);
+        //print("["+x+","+y+"]" + " collisionInfo = " + collisionInfo.gameObject.name);
         GetComponent<Renderer>().material.color = Color.blue;
     }
 

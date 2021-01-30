@@ -9,7 +9,9 @@ public class Movement : MonoBehaviour
     [SerializeField] PlayerInput playerInput;
     [SerializeField] float moveSpeed = 3F;
     [SerializeField] GameObject boyModel;
+    [SerializeField] Animator animPlayer;
     Vector3 moveVector;
+    Vector3 ant;
 
     void FixedUpdate()
     {
@@ -18,8 +20,11 @@ public class Movement : MonoBehaviour
 
     public void Move()
     {
-
         transform.Translate(moveVector);
+
+        if (ant != transform.transform.position) animPlayer.SetBool("isMoving", true);
+        else animPlayer.SetBool("isMoving", false);
+        ant = transform.transform.position;
     }
 
     public void OnMove(InputValue input)
@@ -28,6 +33,8 @@ public class Movement : MonoBehaviour
         moveVector = new Vector3(vec.x, 0, vec.y) * moveSpeed * Time.deltaTime;
 
         boyModel.transform.rotation = Quaternion.LookRotation(moveVector);
+        animPlayer.Play("Boy_Armature|Run");
+        animPlayer.Play("Adult_Armature|Run");
     }
 
 
