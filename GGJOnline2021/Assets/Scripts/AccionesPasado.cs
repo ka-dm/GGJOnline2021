@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 
 public class AccionesPasado : MonoBehaviour
 {
+    [SerializeField] GameObject semilla;
     [SerializeField] GameObject arbol;
-    public bool sembrar;
-    int contador = 0;
+    [SerializeField] Grid grid;
+    [SerializeField] float distanciaEntrePlataformas;
+
     // Start is called before the first frame update
     void Start()
     {
-        sembrar = false;
     }
 
     // Update is called once per frame
@@ -20,12 +21,15 @@ public class AccionesPasado : MonoBehaviour
         //if (Input.GetKeyUp("space")) SembrarSemilla(transform.position);
     }
 
-    public void OnSembrarSemilla(InputValue input)
+    public void OnSembrar(InputValue input)
     {
-        Vector3 pos = transform.position;
-        Instantiate(arbol, pos, Quaternion.identity);
+        Vector3 pos = grid.GetNearestPointOnGrid(transform.position);
+        Instantiate(semilla, pos, Quaternion.identity);
 
-        contador++;
-        print("Sembar semilla" + contador);
+        var treePos = new Vector3(distanciaEntrePlataformas, 0, 0);
+        Vector3 pos2 = grid.GetNearestPointOnGrid(pos + treePos);
+        var arb = Instantiate(arbol);
+        arb.transform.position = pos2;
+
     }
 }
