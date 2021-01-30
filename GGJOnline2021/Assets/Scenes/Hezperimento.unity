@@ -2241,31 +2241,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba6b7b5b30ae20409a121a289f278bb, type: 3}
---- !u!1 &1850192769 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4924259985412935013, guid: acc5b3d9bf15ffb4eaa2f8000f0c0605,
-    type: 3}
-  m_PrefabInstance: {fileID: 4924259985422576523}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1850192775
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850192769}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4d9d02bf82fdbcb4c9be0f2ac0d2cb3b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1911762808
 GameObject:
   m_ObjectHideFlags: 0
@@ -2545,6 +2520,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!1 &2004246336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4924259984731651872, guid: acc5b3d9bf15ffb4eaa2f8000f0c0605,
+    type: 3}
+  m_PrefabInstance: {fileID: 4924259985422576523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2004246337
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004246336}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d9d02bf82fdbcb4c9be0f2ac0d2cb3b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &2064413513 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3545326859611838011, guid: 2074133cf832eb544b5ea372b04e6d72,
@@ -2972,7 +2972,7 @@ PrefabInstance:
         type: 3}
       propertyPath: animPlayer
       value: 
-      objectReference: {fileID: 1850192775}
+      objectReference: {fileID: 2004246337}
     - target: {fileID: 4924259985412935039, guid: acc5b3d9bf15ffb4eaa2f8000f0c0605,
         type: 3}
       propertyPath: m_LocalRotation.x
