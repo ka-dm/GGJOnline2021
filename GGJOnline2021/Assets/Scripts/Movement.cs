@@ -9,6 +9,9 @@ public class Movement : MonoBehaviour
 {
     PlayerInput playerInput;
     CharacterController characterController;
+    [SerializeField] Animator animPlayer;
+    Transform character;
+
     Vector3 moveVector;
     Vector3 frictionMove;
 
@@ -20,6 +23,7 @@ public class Movement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float friction = 10f;
     [SerializeField] float moveSpeed = 3F;
+    [SerializeField] float rotateSpeed = 3F;
     [SerializeField] float gravity;
 
     [Header("Interactive")]
@@ -31,16 +35,16 @@ public class Movement : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         characterController = GetComponent<CharacterController>();
+        character = GetComponent<Transform>();
     }
     void Update()
     {
         Move();
+        Animation();
     }
 
     public void Move()
     {
-
-        //Vector2 moveXY = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         inputsPlayer = inputsPlayer.normalized;
 
@@ -49,16 +53,34 @@ public class Movement : MonoBehaviour
 
         GravityPlayer();
 
-        moveVector = (inputsPlayer.x * cameraR + inputsPlayer.y * cameraF ) * moveSpeed;
+        moveVector = (inputsPlayer.x * cameraR + inputsPlayer.y * cameraF) * moveSpeed;
         moveVector.y = Yvelocity;
+
+        //rotacion del personaje
+        RotatePlayer();
 
         //Friccion movimiento
         frictionMove = Vector3.Lerp(frictionMove, moveVector, friction * Time.deltaTime);
 
         characterController.Move(frictionMove * Time.deltaTime);
 
+
+
+
     }
 
+
+    public void RotatePlayer()
+    {
+        if (inputsPlayer.x != 0 || inputsPlayer.y != 0)
+        {
+            Vector3 lookAt = moveVector;
+            lookAt.y = 0;
+            Quaternion look = Quaternion.LookRotation(lookAt, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, look, rotateSpeed * Time.deltaTime );
+        }
+
+    }
 
     public void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -96,4 +118,20 @@ public class Movement : MonoBehaviour
         Debug.Log("a");
     }
 
+
+    public void Animation()
+    {
+        Vector2 velocity = new Vector2(characterController.velocity.x, characterController.velocity.z);
+        animPlayer.SetFloat("Speed", velocity.magnitude / moveSpeed);
+        /*
+        if (velocity.magnitude != 0){
+            animPlayer.SetBool("isMoving", true);
+        }
+        else{
+            animPlayer.SetBool("isMoving", false);
+        }
+        */
+
+    }
+     
 }
