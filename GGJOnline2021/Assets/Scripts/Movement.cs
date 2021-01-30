@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] PlayerInput playerInput;
     [SerializeField] float moveSpeed = 3F;
+    [SerializeField] GameObject boyModel;
     Vector3 moveVector;
 
     void FixedUpdate()
@@ -17,6 +18,7 @@ public class Movement : MonoBehaviour
 
     public void Move()
     {
+
         transform.Translate(moveVector);
     }
 
@@ -24,6 +26,8 @@ public class Movement : MonoBehaviour
     {
         Vector2 vec = input.Get<Vector2>();
         moveVector = new Vector3(vec.x, 0, vec.y) * moveSpeed * Time.deltaTime;
+
+        boyModel.transform.rotation = Quaternion.LookRotation(moveVector);
     }
 
 

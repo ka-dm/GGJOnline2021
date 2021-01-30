@@ -1,8 +1,26 @@
 fileFormatVersion: 2
-guid: d8123a11c997def4d82c6495209ebdf3
+guid: 3344890bdd46d6c4a9ef4f1ce6af341a
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 5039196468656064807
+    second: Boy_Armature|Attack
+  - first:
+      74: -7310998914994241442
+    second: Boy_Armature|Idle
+  - first:
+      74: 7593184733420348294
+    second: Boy_Armature|Run
+  - first:
+      74: 6195067009972602770
+    second: Boy_Armature|Push
+  - first:
+      74: 5092964699748676661
+    second: Boy_Armature|Seed
+  - first:
+      74: -4081882280994047663
+    second: Boy_Armature|Seed2
   externalObjects: {}
   materials:
     materialImportMode: 1
