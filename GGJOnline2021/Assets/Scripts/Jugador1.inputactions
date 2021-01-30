@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "SendMessage",
+                    "name": "Action",
                     "type": "Button",
                     "id": "9700a54c-9d40-4d4a-bd4c-f86688704ee7",
                     "expectedControlType": "Button",
@@ -114,11 +114,11 @@
                 {
                     "name": "",
                     "id": "1643a48a-b7cb-4a61-8a2d-d7a3888e299a",
-                    "path": "<Keyboard>/enter",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SendMessage",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
