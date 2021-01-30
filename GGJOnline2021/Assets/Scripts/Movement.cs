@@ -6,9 +6,8 @@ using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] PlayerInput playerInput;
-    [SerializeField] CharacterController characterController;
-    [SerializeField] float moveSpeed = 3F;
+    PlayerInput playerInput;
+    CharacterController characterController;
     Vector3 moveVector;
     Vector3 frictionMove;
 
@@ -16,14 +15,22 @@ public class Movement : MonoBehaviour
     Vector3 cameraR;
     Vector3 cameraF;
 
-    [SerializeField] float gravity;
     float Yvelocity;
+    [Header("Movement")]
+    [SerializeField] float friction = 10f;
+    [SerializeField] float moveSpeed = 3F;
+    [SerializeField] float gravity;
 
-    [SerializeField] float friction;
+    [Header("Interactive")]
+    [SerializeField] float forcePush;
 
     Vector2 inputsPlayer;
 
-
+    private void Start()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        characterController = GetComponent<CharacterController>();
+    }
     void Update()
     {
         Move();
@@ -51,7 +58,22 @@ public class Movement : MonoBehaviour
 
     }
 
-    
+
+    public void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body  = hit.collider.attachedRigidbody;
+
+        if (body == null || body.isKinematic)
+        {
+            return;
+        }
+
+
+        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+
+        body.velocity = pushDir * forcePush;
+    }
+
 
     public void GravityPlayer()
     {
@@ -70,7 +92,7 @@ public class Movement : MonoBehaviour
     public void OnMove(InputValue input)
     {
         inputsPlayer = input.Get<Vector2>();
-
+        Debug.Log("a");
     }
 
 }
