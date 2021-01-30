@@ -1,4 +1,5 @@
-﻿using System.Collections;
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,37 +8,70 @@ using UnityEngine.UI;
 public class Movement : MonoBehaviour
 {
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] CharacterController characterController;
     [SerializeField] float moveSpeed = 3F;
-    [SerializeField] GameObject boyModel;
-    [SerializeField] Animator animPlayer;
     Vector3 moveVector;
-    Vector3 ant;
+    Vector3 frictionMove;
 
-    void FixedUpdate()
+    [SerializeField] Camera mainCamera;
+    Vector3 cameraR;
+    Vector3 cameraF;
+
+    [SerializeField] float gravity;
+    float Yvelocity;
+
+    [SerializeField] float friction;
+
+    Vector2 inputsPlayer;
+
+
+    void Update()
     {
         Move();
     }
 
     public void Move()
     {
-        transform.Translate(moveVector);
 
-        if (ant != transform.transform.position) animPlayer.SetBool("isMoving", true);
-        else animPlayer.SetBool("isMoving", false);
-        ant = transform.transform.position;
+        //Vector2 moveXY = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        inputsPlayer = inputsPlayer.normalized;
+
+        cameraR = mainCamera.transform.right;
+        cameraF = mainCamera.transform.forward;
+
+        GravityPlayer();
+
+        moveVector = (inputsPlayer.x * cameraR + inputsPlayer.y * cameraF ) * moveSpeed;
+        moveVector.y = Yvelocity;
+
+        //Friccion movimiento
+        frictionMove = Vector3.Lerp(frictionMove, moveVector, friction * Time.deltaTime);
+
+        characterController.Move(frictionMove * Time.deltaTime);
+
+    }
+
+    
+
+    public void GravityPlayer()
+    {
+
+        if (characterController.isGrounded)
+        {
+            Yvelocity = -gravity * Time.deltaTime;
+        }
+        else
+        {
+            Yvelocity -= gravity * Time.deltaTime;
+        }
+
     }
 
     public void OnMove(InputValue input)
     {
-        Vector2 vec = input.Get<Vector2>();
-        moveVector = new Vector3(vec.x, 0, vec.y) * moveSpeed * Time.deltaTime;
+        inputsPlayer = input.Get<Vector2>();
 
-        boyModel.transform.rotation = Quaternion.LookRotation(moveVector);
-        animPlayer.Play("Boy_Armature|Run");
-        animPlayer.Play("Adult_Armature|Run");
     }
-
-
-
 
 }
