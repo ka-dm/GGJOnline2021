@@ -24,6 +24,12 @@ public class GridStats : MonoBehaviour
     {
         //print("["+x+","+y+"]" + " collisionInfo = " + collisionInfo.gameObject.name);
         GetComponent<Renderer>().material.color = Color.blue;
+        if(collisionInfo.transform.tag == "Semilla")
+        {
+            var go = collisionInfo.gameObject;
+            go.transform.parent = this.transform;
+            collisionInfo.gameObject.transform.localPosition = new Vector3(0, 0, 0);
+        }
     }
 
     void OnCollisionExit(Collision collisionInfo)

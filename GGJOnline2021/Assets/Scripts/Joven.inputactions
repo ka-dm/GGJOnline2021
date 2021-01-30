@@ -1,5 +1,5 @@
 {
-    "name": "Jugador2",
+    "name": "Joven",
     "maps": [
         {
             "name": "Player",
@@ -14,17 +14,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "SembrarSemilla",
+                    "name": "Sembrar",
                     "type": "Button",
                     "id": "a719da27-734a-4fc4-8c80-b87847961cb0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Action",
-                    "type": "Button",
-                    "id": "5e2ee9ca-1eb0-40bf-b1f7-03b6f422430b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -56,7 +48,7 @@
                 {
                     "name": "up",
                     "id": "e2062cb9-1b15-46a2-838c-2f8d72a0bdd9",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -67,7 +59,7 @@
                 {
                     "name": "down",
                     "id": "320bffee-a40b-4347-ac70-c210eb8bc73a",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -78,7 +70,7 @@
                 {
                     "name": "left",
                     "id": "d2581a9b-1d11-4566-b27d-b92aff5fabbc",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -89,7 +81,7 @@
                 {
                     "name": "right",
                     "id": "fcfe95b8-67b9-4526-84b5-5d0bc98d6400",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -126,18 +118,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SembrarSemilla",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c74303ec-49b3-474f-ba63-fd049be332d8",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Action",
+                    "action": "Sembrar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
