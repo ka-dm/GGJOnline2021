@@ -2,7 +2,16 @@ fileFormatVersion: 2
 guid: d6e5babc5827a024daef0c8434dea9db
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 2225778981900227934
+    second: Old_Armature|Attack
+  - first:
+      74: 3551596600812264239
+    second: Old_Armature|Idle
+  - first:
+      74: -4074227253228071049
+    second: Old_Armature|Run
   externalObjects: {}
   materials:
     materialImportMode: 1

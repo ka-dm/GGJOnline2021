@@ -14,7 +14,7 @@ public class CrearPlataforma : MonoBehaviour
     {
         n = 15;
         m = 15;
-        scale = 1;
+        scale = 2;
 
         CrearCuadricula();
     }

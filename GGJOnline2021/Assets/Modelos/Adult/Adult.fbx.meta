@@ -2,7 +2,19 @@ fileFormatVersion: 2
 guid: fc58a345cb451ce49bd966c3b45e8f17
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 8328121261291870915
+    second: Adult_Armature|Attack
+  - first:
+      74: -4129977846200315822
+    second: Adult_Armature|Run
+  - first:
+      74: -8872558532972432260
+    second: Adult_Armature|Seed
+  - first:
+      74: 4833717241786227413
+    second: Adult_Armature|Seed2
   externalObjects: {}
   materials:
     materialImportMode: 1
