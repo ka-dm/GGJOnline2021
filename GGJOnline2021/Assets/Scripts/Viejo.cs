@@ -41,6 +41,14 @@ public class @Viejo : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""CreateLine"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe3f6485-d429-4f77-be26-2edc9829a21e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -153,6 +161,17 @@ public class @Viejo : IInputActionCollection, IDisposable
                     ""action"": ""SendSeed"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e77bf2c3-4123-4752-aaf0-cffa8c5a8e25"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CreateLine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -225,6 +244,7 @@ public class @Viejo : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_SendMessage = m_Player.FindAction("SendMessage", throwIfNotFound: true);
         m_Player_SendSeed = m_Player.FindAction("SendSeed", throwIfNotFound: true);
+        m_Player_CreateLine = m_Player.FindAction("CreateLine", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -277,6 +297,7 @@ public class @Viejo : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_SendMessage;
     private readonly InputAction m_Player_SendSeed;
+    private readonly InputAction m_Player_CreateLine;
     public struct PlayerActions
     {
         private @Viejo m_Wrapper;
@@ -284,6 +305,7 @@ public class @Viejo : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @SendMessage => m_Wrapper.m_Player_SendMessage;
         public InputAction @SendSeed => m_Wrapper.m_Player_SendSeed;
+        public InputAction @CreateLine => m_Wrapper.m_Player_CreateLine;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -302,6 +324,9 @@ public class @Viejo : IInputActionCollection, IDisposable
                 @SendSeed.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendSeed;
                 @SendSeed.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendSeed;
                 @SendSeed.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendSeed;
+                @CreateLine.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCreateLine;
+                @CreateLine.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCreateLine;
+                @CreateLine.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCreateLine;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -315,6 +340,9 @@ public class @Viejo : IInputActionCollection, IDisposable
                 @SendSeed.started += instance.OnSendSeed;
                 @SendSeed.performed += instance.OnSendSeed;
                 @SendSeed.canceled += instance.OnSendSeed;
+                @CreateLine.started += instance.OnCreateLine;
+                @CreateLine.performed += instance.OnCreateLine;
+                @CreateLine.canceled += instance.OnCreateLine;
             }
         }
     }
@@ -369,5 +397,6 @@ public class @Viejo : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnSendMessage(InputAction.CallbackContext context);
         void OnSendSeed(InputAction.CallbackContext context);
+        void OnCreateLine(InputAction.CallbackContext context);
     }
 }
