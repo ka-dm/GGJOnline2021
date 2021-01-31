@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4924259985412935035}
   - component: {fileID: 4924259985412935012}
   - component: {fileID: 126677786}
+  - component: {fileID: 775244276150025476}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -202,7 +203,6 @@ MonoBehaviour:
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &126677786
-
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,6 +216,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wool: 1
   seed: 5
+--- !u!114 &775244276150025476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4924259985412935013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c189ff9b9cfac6941a0422764ab4373c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linePrefab: {fileID: 8070203497752924928, guid: 824e528f7fa44224cb5638cedf15381b,
+    type: 3}
+  inventory: {fileID: 126677786}
+  grid: {fileID: 0}
+  nearestTree: {fileID: 0}
+  lastTree: {fileID: 0}
 --- !u!1 &4924259985437188639
 GameObject:
   m_ObjectHideFlags: 0
