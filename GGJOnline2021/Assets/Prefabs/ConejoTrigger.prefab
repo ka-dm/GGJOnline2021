@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7564494528867441080}
   m_Layer: 0
   m_Name: ConejoTrigger
-  m_TagString: Untagged
+  m_TagString: Wool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7564494529539424094
 GameObject:
