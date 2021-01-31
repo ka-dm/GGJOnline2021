@@ -21,6 +21,7 @@ public class ConejoTrigger : MonoBehaviour
     {
         if(other.gameObject.transform.tag == "Player")
         {
+            Debug.Log("Entra");
             randomPos = new Vector3(Random.Range(-15F, 15F), 0, Random.Range(-15F, 15F));
             currentPos = originSpawn.position + randomPos;
             currentPos.y = 0;
