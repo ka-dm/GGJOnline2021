@@ -14,6 +14,8 @@ public class PlantSeedAction : MonoBehaviour
 
     [SerializeField] Inventory inventory;
 
+    [SerializeField] List<GameObject> listSeed = new List<GameObject>();
+
 
     public static event NotifySeedNumber updateSeedNumber;
 
@@ -26,13 +28,21 @@ public class PlantSeedAction : MonoBehaviour
 
     public void OnSembrar(InputValue input)
     {
+
+        for (int i = 0; i < listSeed.Count; i++)
+        {
+            if (listSeed[i].transform.position == grid.GetNearestPointOnGrid(transform.position))
+                return;
+        }
+
         if(inventory.seed > 0)
         {
             inventory.seed--;
             if (updateSeedNumber != null)
                 updateSeedNumber(inventory.seed);
             Vector3 pos = grid.GetNearestPointOnGrid(transform.position);
-            Instantiate(semilla, pos, Quaternion.identity);
+            GameObject seed = Instantiate(semilla, pos, Quaternion.identity);
+            listSeed.Add(seed);
             MakeTree(pos);
         }
     }
