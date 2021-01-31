@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
-    Tree tree1;
-    Tree tree2;
+    public Tree lastTree;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,6 +18,7 @@ public class Tree : MonoBehaviour
     {
         if (other.gameObject.transform.tag == "Player")
         {
+            other.gameObject.GetComponent<CreateLineAction>().lastTree = this;
             other.gameObject.GetComponent<CreateLineAction>().nearestTree = null;
         }
     }

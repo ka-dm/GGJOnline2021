@@ -12,6 +12,7 @@ public class CreateLineAction : MonoBehaviour
     [SerializeField] Inventory inventory;
     [SerializeField] Grid grid;
     public Tree nearestTree;
+    public Tree lastTree;
     Vector3 plus = new Vector3(0, 2.2F, 0);
 
 
@@ -27,8 +28,9 @@ public class CreateLineAction : MonoBehaviour
             currentLine = Instantiate(linePrefab).GetComponent<LineRenderer>();
             currentPoint = grid.GetNearestPointOnGrid(nearestTree.gameObject.transform.position);
         }
-        else if (nearestTree != null)
-        {    
+        else if (currentLine != null && nearestTree != null)
+        {
+            nearestTree.lastTree = this.lastTree;
             var points = new Vector3[2];
             points[0] = currentPoint + plus;
             points[1] = grid.GetNearestPointOnGrid(nearestTree.gameObject.transform.position) + plus;
@@ -41,10 +43,28 @@ public class CreateLineAction : MonoBehaviour
             meshCollider.sharedMesh = mesh;
             meshCollider.convex = true;
 
+            VerificarEncierro();
+
             currentLine = null;
+        } 
+    }
+
+    public void VerificarEncierro()
+    {
+        var listaArboles = new List<Tree>();
+        var fistArbolito = nearestTree;
+        Tree arbolito = nearestTree;
+        while(arbolito.lastTree != null)
+        {       
+            listaArboles.Add(arbolito.lastTree);
+            arbolito = arbolito.lastTree;
+            if (arbolito == fistArbolito)
+            {
+                inventory.wool += 3;
+                break;
+            }
         }
         
-
     }
 
     public void OnCreateLine(InputValue input)
