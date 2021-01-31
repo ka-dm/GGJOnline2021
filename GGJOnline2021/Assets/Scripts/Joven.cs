@@ -33,6 +33,14 @@ public class @Joven : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SendWool"",
+                    ""type"": ""Button"",
+                    ""id"": ""b983c81a-efc1-4809-bbde-c32b861f44f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -134,6 +142,17 @@ public class @Joven : IInputActionCollection, IDisposable
                     ""action"": ""Sembrar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""376aa648-286c-4c2a-8b4d-8898dbf3d32a"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SendWool"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -205,6 +224,7 @@ public class @Joven : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Sembrar = m_Player.FindAction("Sembrar", throwIfNotFound: true);
+        m_Player_SendWool = m_Player.FindAction("SendWool", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -256,12 +276,14 @@ public class @Joven : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Sembrar;
+    private readonly InputAction m_Player_SendWool;
     public struct PlayerActions
     {
         private @Joven m_Wrapper;
         public PlayerActions(@Joven wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Sembrar => m_Wrapper.m_Player_Sembrar;
+        public InputAction @SendWool => m_Wrapper.m_Player_SendWool;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -277,6 +299,9 @@ public class @Joven : IInputActionCollection, IDisposable
                 @Sembrar.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSembrar;
                 @Sembrar.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSembrar;
                 @Sembrar.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSembrar;
+                @SendWool.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendWool;
+                @SendWool.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendWool;
+                @SendWool.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendWool;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -287,6 +312,9 @@ public class @Joven : IInputActionCollection, IDisposable
                 @Sembrar.started += instance.OnSembrar;
                 @Sembrar.performed += instance.OnSembrar;
                 @Sembrar.canceled += instance.OnSembrar;
+                @SendWool.started += instance.OnSendWool;
+                @SendWool.performed += instance.OnSendWool;
+                @SendWool.canceled += instance.OnSendWool;
             }
         }
     }
@@ -340,5 +368,6 @@ public class @Joven : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnSembrar(InputAction.CallbackContext context);
+        void OnSendWool(InputAction.CallbackContext context);
     }
 }

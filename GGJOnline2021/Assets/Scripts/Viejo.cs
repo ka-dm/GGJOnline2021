@@ -33,6 +33,14 @@ public class @Viejo : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SendSeed"",
+                    ""type"": ""Button"",
+                    ""id"": ""06451829-46ba-4aed-8734-a5ffda02e501"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -134,6 +142,17 @@ public class @Viejo : IInputActionCollection, IDisposable
                     ""action"": ""SendMessage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""223ef3a4-36c1-4c59-8769-411a84844be5"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SendSeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -205,6 +224,7 @@ public class @Viejo : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_SendMessage = m_Player.FindAction("SendMessage", throwIfNotFound: true);
+        m_Player_SendSeed = m_Player.FindAction("SendSeed", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -256,12 +276,14 @@ public class @Viejo : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_SendMessage;
+    private readonly InputAction m_Player_SendSeed;
     public struct PlayerActions
     {
         private @Viejo m_Wrapper;
         public PlayerActions(@Viejo wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @SendMessage => m_Wrapper.m_Player_SendMessage;
+        public InputAction @SendSeed => m_Wrapper.m_Player_SendSeed;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -277,6 +299,9 @@ public class @Viejo : IInputActionCollection, IDisposable
                 @SendMessage.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendMessage;
                 @SendMessage.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendMessage;
                 @SendMessage.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendMessage;
+                @SendSeed.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendSeed;
+                @SendSeed.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendSeed;
+                @SendSeed.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendSeed;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -287,6 +312,9 @@ public class @Viejo : IInputActionCollection, IDisposable
                 @SendMessage.started += instance.OnSendMessage;
                 @SendMessage.performed += instance.OnSendMessage;
                 @SendMessage.canceled += instance.OnSendMessage;
+                @SendSeed.started += instance.OnSendSeed;
+                @SendSeed.performed += instance.OnSendSeed;
+                @SendSeed.canceled += instance.OnSendSeed;
             }
         }
     }
@@ -340,5 +368,6 @@ public class @Viejo : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnSendMessage(InputAction.CallbackContext context);
+        void OnSendSeed(InputAction.CallbackContext context);
     }
 }

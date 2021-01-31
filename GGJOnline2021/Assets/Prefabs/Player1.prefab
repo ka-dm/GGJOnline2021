@@ -73,9 +73,10 @@ GameObject:
   - component: {fileID: 674129570115092206}
   - component: {fileID: 674129570115092203}
   - component: {fileID: 3513801556376111481}
+  - component: {fileID: 8740876738145130303}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,7 +199,21 @@ MonoBehaviour:
   arbol: {fileID: 4927414511041655260, guid: 284ef3c26d7892f499e35dc333508745, type: 3}
   grid: {fileID: 0}
   distanciaEntrePlataformas: 100
-  currentAvailableSeeds: 5
+  inventory: {fileID: 8740876738145130303}
+--- !u!114 &8740876738145130303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674129570115092180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2808f3ab757c114478d8be60b95106a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wool: 1
+  seed: 5
 --- !u!1 &674129570457992826
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,26 +12,25 @@ public class PlantSeedAction : MonoBehaviour
     [SerializeField] Grid grid;
     [SerializeField] float distanciaEntrePlataformas;
 
-    [SerializeField] int currentAvailableSeeds = 5;
+    [SerializeField] Inventory inventory;
+
 
     public static event NotifySeedNumber updateSeedNumber;
-
-    public int CurrentAvailableSeeds { get => currentAvailableSeeds; set => currentAvailableSeeds = value; }
 
     private void Start()
     {
         grid = (Grid)FindObjectOfType(typeof(Grid));
         if (updateSeedNumber != null)
-        updateSeedNumber(currentAvailableSeeds);
+        updateSeedNumber(inventory.seed);
     }
 
     public void OnSembrar(InputValue input)
     {
-        if(currentAvailableSeeds > 0)
+        if(inventory.seed > 0)
         {
-            currentAvailableSeeds--;
+            inventory.seed--;
             if (updateSeedNumber != null)
-                updateSeedNumber(currentAvailableSeeds);
+                updateSeedNumber(inventory.seed);
             Vector3 pos = grid.GetNearestPointOnGrid(transform.position);
             Instantiate(semilla, pos, Quaternion.identity);
             MakeTree(pos);

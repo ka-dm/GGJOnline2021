@@ -20,6 +20,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SendWool",
+                    "type": "Button",
+                    "id": "b983c81a-efc1-4809-bbde-c32b861f44f6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -119,6 +127,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Sembrar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "376aa648-286c-4c2a-8b4d-8898dbf3d32a",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SendWool",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

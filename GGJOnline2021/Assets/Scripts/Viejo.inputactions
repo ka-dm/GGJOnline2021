@@ -20,6 +20,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SendSeed",
+                    "type": "Button",
+                    "id": "06451829-46ba-4aed-8734-a5ffda02e501",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -119,6 +127,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SendMessage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "223ef3a4-36c1-4c59-8769-411a84844be5",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SendSeed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
