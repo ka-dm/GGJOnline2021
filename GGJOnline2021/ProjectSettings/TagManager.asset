@@ -7,10 +7,6 @@ TagManager:
   - Box
   - Car
   - Wool
-  - Semilla
-  - Player1
-  - Player2
-  - base
   layers:
   - Default
   - TransparentFX
