@@ -13,6 +13,8 @@ public class CreateLineAction : MonoBehaviour
     [SerializeField] Grid grid;
     public Tree nearestTree;
     public Tree lastTree;
+    int contador = 2;
+    [SerializeField] GameObject ganaste;
     Vector3 plus = new Vector3(0, 2.2F, 0);
 
 
@@ -61,8 +63,14 @@ public class CreateLineAction : MonoBehaviour
             if (arbolito == fistArbolito)
             {
                 inventory.wool += 3;
+                contador--;
                 break;
             }
+        }
+
+        if(contador == 0)
+        {
+            ganaste.gameObject.SetActive(true);
         }
         
     }
