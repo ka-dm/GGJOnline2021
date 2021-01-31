@@ -6172,6 +6172,16 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 1493832830}
+    - target: {fileID: 8740876738145130303, guid: 2074133cf832eb544b5ea372b04e6d72,
+        type: 3}
+      propertyPath: seed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740876738145130303, guid: 2074133cf832eb544b5ea372b04e6d72,
+        type: 3}
+      propertyPath: wool
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8797812981745065352, guid: 2074133cf832eb544b5ea372b04e6d72,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6325,6 +6335,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2074404342}
     m_Modifications:
+    - target: {fileID: 126677786, guid: acc5b3d9bf15ffb4eaa2f8000f0c0605, type: 3}
+      propertyPath: wool
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 126677786, guid: acc5b3d9bf15ffb4eaa2f8000f0c0605, type: 3}
+      propertyPath: seed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 775244276150025476, guid: acc5b3d9bf15ffb4eaa2f8000f0c0605,
         type: 3}
       propertyPath: ganaste
