@@ -20,6 +20,8 @@ public class PlantSeedAction : MonoBehaviour
 
     private void Start()
     {
+        grid = (Grid)FindObjectOfType(typeof(Grid));
+        if (updateSeedNumber != null)
         updateSeedNumber(currentAvailableSeeds);
     }
 
@@ -28,7 +30,8 @@ public class PlantSeedAction : MonoBehaviour
         if(currentAvailableSeeds > 0)
         {
             currentAvailableSeeds--;
-            updateSeedNumber(currentAvailableSeeds);
+            if (updateSeedNumber != null)
+                updateSeedNumber(currentAvailableSeeds);
             Vector3 pos = grid.GetNearestPointOnGrid(transform.position);
             Instantiate(semilla, pos, Quaternion.identity);
             MakeTree(pos);
