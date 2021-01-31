@@ -7,7 +7,6 @@ TagManager:
   - Box
   - Car
   - Wool
-  - Tree
   layers:
   - Default
   - TransparentFX
