@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Well : MonoBehaviour
 {
@@ -8,9 +9,19 @@ public class Well : MonoBehaviour
     int accumulateWool = 0;
     int accumulateSeed = 0;
 
+    [SerializeField] TextMeshProUGUI woolText;
+    [SerializeField] TextMeshProUGUI seedText;
+
     public int AccumulateWool { get => accumulateWool; set => accumulateWool = value; }
     public int AccumulateSeed { get => accumulateSeed; set => accumulateSeed = value; }
 
+    private void Update()
+    {
+        if(woolText != null)
+            woolText.text = string.Format("x{0}", accumulateWool);
+        if(seedText != null)
+            seedText.text = string.Format("x{0}", accumulateSeed);
+    }
     public void PassWoll()
     {
         nextWell.AccumulateWool++;
