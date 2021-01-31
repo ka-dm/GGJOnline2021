@@ -11,16 +11,6 @@ public class movFantasma : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int enemigoSeguir = Random.Range(0, 2);
-
-        if (enemigoSeguir == 1)
-        {
-            objectFollow = GameObject.FindGameObjectWithTag("Player1").GetComponent<Transform>();
-        }
-        else{
-            objectFollow = GameObject.FindGameObjectWithTag("Player2").GetComponent<Transform>();
-
-        }
     }
 
     // Update is called once per frame
@@ -30,11 +20,5 @@ public class movFantasma : MonoBehaviour
         transform.Translate(0.0f, 0.0f, velocidadMovimiento*Time.deltaTime);
 
         }
-
-    public void OnTriggerEnter(Collider collision) 
-    {
-       // if (collision.tag == "base")
-            Destroy(gameObject);
-    }
 }
 
