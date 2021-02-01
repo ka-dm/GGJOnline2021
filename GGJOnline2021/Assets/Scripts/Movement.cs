@@ -31,6 +31,9 @@ public class Movement : MonoBehaviour
 
     Vector2 inputsPlayer;
 
+    [Header("Animation")]
+    bool push;
+
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -69,7 +72,6 @@ public class Movement : MonoBehaviour
 
     }
 
-
     public void RotatePlayer()
     {
         if (inputsPlayer.x != 0 || inputsPlayer.y != 0)
@@ -90,7 +92,6 @@ public class Movement : MonoBehaviour
         {
             return;
         }
-
 
         Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
 
@@ -115,22 +116,38 @@ public class Movement : MonoBehaviour
     public void OnMove(InputValue input)
     {
         inputsPlayer = input.Get<Vector2>();
-        Debug.Log("a");
     }
 
 
     public void Animation()
     {
+        RaycastHit Hit;
+
         Vector2 velocity = new Vector2(characterController.velocity.x, characterController.velocity.z);
-        animPlayer.SetFloat("Speed", velocity.magnitude / moveSpeed);
-        /*
-        if (velocity.magnitude != 0){
-            animPlayer.SetBool("isMoving", true);
+
+
+        if (!push)
+        {
+            animPlayer.SetFloat("Speed", velocity.magnitude / moveSpeed);
         }
-        else{
-            animPlayer.SetBool("isMoving", false);
+
+        animPlayer.SetBool("isPush", push);
+
+
+        if (Physics.Raycast(transform.position + transform.up, transform.forward, out Hit, 1.5f))
+        {
+            if (Hit.transform.CompareTag("Box") && velocity.magnitude / moveSpeed > 0)
+            {
+                push = true;
+            }
+
         }
-        */
+        else
+        {
+            push = false;
+        }
+
+
 
     }
      

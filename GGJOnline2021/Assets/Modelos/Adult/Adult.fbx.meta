@@ -15,6 +15,12 @@ ModelImporter:
   - first:
       74: 4833717241786227413
     second: Adult_Armature|Seed2
+  - first:
+      74: -3100369314251171874
+    second: Idle
+  - first:
+      74: -2169819818138733289
+    second: Adult_Armature|Idle.001
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -101,7 +107,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
